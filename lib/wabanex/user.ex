@@ -8,11 +8,14 @@ defmodule Wabanex.User do
 
   # similar ao destructuring do js, @variable eh uma var que soh existe nesse module
   @fields [:email, :password, :name]
+  @optional_fields [:height, :weight]
 
   schema "users" do
     field :email, :string
     field :name, :string
     field :password, :string
+    field :height, :float
+    field :weight, :float
 
     has_many :trainings, Training
 
@@ -31,5 +34,8 @@ defmodule Wabanex.User do
     |> validate_length(:name, min: 2)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint([:email])
+    |> cast(params, @optional_fields)
+    |> validate_number(:height, greater_than: 0, less_than: 3)
+    |> validate_number(:weight, greater_than: 0, less_than: 1000)
   end
 end

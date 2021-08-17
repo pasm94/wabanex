@@ -7,7 +7,7 @@ defmodule Wabanex.User do
   @primary_key {:id, :binary_id, autogenerate: true}
 
   # similar ao destructuring do js, @variable eh uma var que soh existe nesse module
-  @fields [:email, :password, :name]
+  @required_fields [:email, :password, :name]
   @optional_fields [:height, :weight]
 
   schema "users" do
@@ -27,14 +27,13 @@ defmodule Wabanex.User do
     %__MODULE__{}
     # quais campos eu quero fazer o cast
     # no caso vai pegar os params fazendo o cast para os campos de @fiels
-    |> cast(params, @fields)
+    |> cast(params, @required_fields ++ @optional_fields)
     # validations
-    |> validate_required(@fields)
+    |> validate_required(@required_fields)
     |> validate_length(:password, min: 6)
     |> validate_length(:name, min: 2)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint([:email])
-    |> cast(params, @optional_fields)
     |> validate_number(:height, greater_than: 0, less_than: 3)
     |> validate_number(:weight, greater_than: 0, less_than: 1000)
   end

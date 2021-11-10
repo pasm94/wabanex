@@ -23,6 +23,10 @@ defmodule WabanexWeb.Schema.Types.Root do
       # resolve fn params, context -> UserResolver.get(params, context) end
       resolve &UserResolver.get/2
     end
+
+    field :get_users, type: list_of(:user) do
+      resolve &UserResolver.get/2
+    end
   end
 
   object :root_mutation do

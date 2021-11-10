@@ -10,6 +10,10 @@ defmodule Wabanex.Users.Get do
     |> handle_response()
   end
 
+  def call() do
+    handle_response()
+  end
+
   defp handle_response(:error) do
     {:error, "Invalid UUID"}
   end
@@ -18,6 +22,13 @@ defmodule Wabanex.Users.Get do
     case Repo.get(User, uuid) do
       nil -> {:error, "User not found"}
       user -> {:ok, load_training(user)}
+    end
+  end
+
+  defp handle_response() do
+    case Repo.all(User) do
+      nil -> {:error, "No users found"}
+      users -> {:ok, users}
     end
   end
 

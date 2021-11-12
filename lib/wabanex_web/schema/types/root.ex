@@ -27,6 +27,11 @@ defmodule WabanexWeb.Schema.Types.Root do
     field :get_users, type: list_of(:user) do
       resolve &UserResolver.get/2
     end
+
+    field :delete_user, type: :user do
+      arg :id, non_null(:uuid4)
+      resolve &UserResolver.delete/2
+    end
   end
 
   object :root_mutation do

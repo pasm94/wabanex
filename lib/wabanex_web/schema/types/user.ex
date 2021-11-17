@@ -9,6 +9,9 @@ defmodule WabanexWeb.Schema.Types.User do
     field :trainings, list_of(:training)
     field :height, :float
     field :weight, :float
+    field :cep, :string
+    field :city, :string
+    field :uf, :string
   end
 
   input_object :create_user_input do
@@ -17,5 +20,6 @@ defmodule WabanexWeb.Schema.Types.User do
     field :password, non_null(:string), description: "Users password"
     field :height, :float
     field :weight, :float
+    field :cep, :string
   end
 end

@@ -8,7 +8,7 @@ defmodule Wabanex.User do
 
   # similar ao destructuring do js, @variable eh uma var que soh existe nesse module
   @required_fields [:email, :password, :name]
-  @optional_fields [:height, :weight]
+  @optional_fields [:height, :weight, :cep, :city, :uf]
 
   schema "users" do
     field :email, :string
@@ -16,6 +16,9 @@ defmodule Wabanex.User do
     field :password, :string
     field :height, :float
     field :weight, :float
+    field :cep, :string
+    field :city, :string
+    field :uf, :string
 
     has_many :trainings, Training
 

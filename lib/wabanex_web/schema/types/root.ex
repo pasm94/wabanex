@@ -5,14 +5,18 @@ defmodule WabanexWeb.Schema.Types.Root do
 
   alias WabanexWeb.Resolvers
 
+  alias Resolvers.File, as: FileResolver
   alias Resolvers.User, as: UserResolver
   alias Resolvers.Training, as: TrainingResolver
 
   alias WabanexWeb.Schema.Types
 
   import_types Types.Custom.UUID4
+  import_types Types.File
   import_types Types.User
   import_types Types.Training
+  import_types Absinthe.Plug.Types
+  # special plug for upload type
 
   object :root_query do
     field :get_user, type: :user do
@@ -46,6 +50,13 @@ defmodule WabanexWeb.Schema.Types.Root do
       arg :input, non_null(:create_training_input)
 
       resolve &TrainingResolver.create/2
+      middleware TranslateErrors
+    end
+
+    field :upload_image, :string do
+      arg :input, non_null(:upload_image_input)
+
+      resolve &FileResolver.upload_image/2
       middleware TranslateErrors
     end
   end

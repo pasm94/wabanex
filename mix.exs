@@ -47,7 +47,12 @@ defmodule Wabanex.MixProject do
       {:absinthe_plug, "~> 1.5"},
       {:crudry, "~> 2.4.0"},
       {:tesla, "~> 1.4"},
-      {:hackney, "~> 1.17"}
+      {:hackney, "~> 1.17"},
+
+      # aws
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:sweet_xml, "~> 0.6"}
     ]
   end
 

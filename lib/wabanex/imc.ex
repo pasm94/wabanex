@@ -27,9 +27,10 @@ defmodule Wabanex.IMC do
     |> List.update_at(1, &String.to_float/1)
     # segundo arg
     |> List.update_at(2, &String.to_float/1)
-    |> IO.inspect()
+    # |> IO.inspect()
     |> calculate_imc()
-    |> IO.inspect()
+
+    # |> IO.inspect()
   end
 
   defp calculate_imc([name, height, weight]), do: {name, weight / (height * 2)}

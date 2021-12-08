@@ -18,5 +18,7 @@ config :wabanex, WabanexWeb.Endpoint,
   http: [port: 4002],
   server: false
 
+config :wabanex, :storage_api, Wabanex.Providers.Storage.AwsS3InMemory
+
 # Print only warnings and errors during test
 config :logger, level: :warn

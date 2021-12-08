@@ -9,6 +9,5 @@ defmodule WabanexWeb.Schema.Types.File do
 
   input_object :upload_image_input do
     field :file, non_null(:upload)
-    field :path, non_null(:string)
   end
 end

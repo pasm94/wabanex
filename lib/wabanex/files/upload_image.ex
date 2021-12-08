@@ -1,13 +1,12 @@
 defmodule Wabanex.Files.UploadImage do
-  def call(params) do
-    %{file: file} = params
-    IO.inspect(file)
-    File.cp(file.path, "#{File.cwd!()}/xyj/#{file.filename}")
+  alias Wabanex.Providers.Storage.Client
 
-    {:ok, "done"}
+  def call(%{file: file}) do
+    response = Client.upload_image(file)
+
+    case response do
+      {:error, reason} -> {:error, reason}
+      {:ok, complete_path} -> {:ok, "path: #{complete_path}"}
+    end
   end
 end
-
-# MULTIPLART UPLOAD
-# query mutation { uploadImage(input: {file:  "users_csv", path: "hhhh"})}
-# users_csv imagem

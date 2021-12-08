@@ -31,6 +31,19 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :wabanex, :storage_api, Wabanex.Providers.Storage.AwsS3
+
+config :ex_aws,
+  debug_requests: true,
+  json_codec: Jason,
+  access_key_id: "",
+  secret_access_key: ""
+
+config :ex_aws, :s3,
+  scheme: "https://",
+  host: "",
+  region: "",
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

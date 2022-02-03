@@ -5,6 +5,7 @@ defmodule Wabanex.IMC do
     |> handle_file()
   end
 
+  # test vscvode.dev
   defp handle_file({:ok, content}) do
     data =
       content

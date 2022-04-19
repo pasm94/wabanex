@@ -20,7 +20,7 @@ defmodule Wabanex.MixProject do
   def application do
     [
       mod: {Wabanex.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :websockex]
     ]
   end
 
@@ -52,7 +52,10 @@ defmodule Wabanex.MixProject do
       # aws
       {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
-      {:sweet_xml, "~> 0.6"}
+      {:sweet_xml, "~> 0.6"},
+
+      # web socket
+      {:websockex, "~> 0.4.3"}
     ]
   end
 

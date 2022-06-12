@@ -14,8 +14,8 @@ defmodule Wabanex.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Wabanex.PubSub},
       # Start the Endpoint (http/https)
-      WabanexWeb.Endpoint,
-      Wabanex.Websocket
+      WabanexWeb.Endpoint
+      # Wabanex.Websocket
       # Start a worker by calling: Wabanex.Worker.start_link(arg)
       # {Wabanex.Worker, arg}
     ]

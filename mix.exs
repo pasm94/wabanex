@@ -55,7 +55,10 @@ defmodule Wabanex.MixProject do
       {:sweet_xml, "~> 0.6"},
 
       # web socket
-      {:websockex, "~> 0.4.3"}
+      {:websockex, "~> 0.4.3"},
+
+      # dataloader for absinthe
+      {:dataloader, "~> 1.0.0"}
     ]
   end
 

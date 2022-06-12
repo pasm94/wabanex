@@ -21,6 +21,13 @@ defmodule Wabanex.Users.Get do
   defp handle_response({:ok, uuid}) do
     case Repo.get(User, uuid) do
       nil -> {:error, "User not found"}
+      user -> {:ok, user}
+    end
+  end
+
+  defp handle_response({:ok, uuid}) do
+    case Repo.get(User, uuid) do
+      nil -> {:error, "User not found"}
       user -> {:ok, load_training(user)}
     end
   end

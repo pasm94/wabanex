@@ -26,4 +26,12 @@ defmodule Wabanex.Training do
     |> unique_constraint([:email])
     |> cast_assoc(:exercises)
   end
+
+  def data() do
+    Dataloader.Ecto.new(Wabanex.Repo, query: &query/2)
+  end
+
+  def query(queryable, _params) do
+    queryable
+  end
 end
